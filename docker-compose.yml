@@ -1,0 +1,50 @@
+version: '3'
+
+networks:
+  petal:
+    driver: bridge
+
+
+x-petal-common:
+  &petal-common
+
+  build:
+    context: .
+    dockerfile: Dockerfile
+
+
+  env_file:
+    - ./.env
+  volumes:
+    - ./app:/app
+  networks:
+    - petal
+
+
+services:
+
+  petal-api:
+    <<: *petal-common
+    container_name: petal-api
+    command: uvicorn src.core.main:app --reload --host 0.0.0.0 --port 80
+    hostname: petal-api
+    ports:
+      - "3110:80"
+
+
+
+  petal-db:
+    image: postgres:latest
+    restart: always
+    container_name: petal-db
+    hostname: petal-db
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5559:5432"
+    environment:
+      - POSTGRES_PASSWORD=s3cret
+      - POSTGRES_USER=petal
+    networks:
+      - petal
+
