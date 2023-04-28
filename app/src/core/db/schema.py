@@ -27,12 +27,6 @@ class Login(BaseModel):
     password: str
 
 
-class NewUser(BaseModel):
-    email: str
-
-    password: str = Field(...)
-
-
 class User(BaseModel):
     email: str
     first_name: str = Field(None, alias="firstName")
