@@ -1,11 +1,9 @@
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
-from datetime import datetime, timedelta
 
 from src.core.db.session import get_db
 from src.core.main import app
 from src.core import security, auth
-from src.core.db import crud
 from src.core.db.models import User
 
 

@@ -1,8 +1,5 @@
-import logging
-import requests
-
 from fastapi.security import OAuth2PasswordRequestForm
-from fastapi import APIRouter, Depends, HTTPException, status, Body
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from src.core.auth import (
@@ -13,7 +10,7 @@ from src.core.auth import (
 )
 from src.core.db.schema import *
 
-from src.core.db import crud, models, schema
+from src.core.db import models
 from src.core.db.session import get_db
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"], include_in_schema=False)

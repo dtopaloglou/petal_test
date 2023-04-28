@@ -1,20 +1,10 @@
-from typing import List
-
 from sqlalchemy import (
     Boolean,
     Column,
-    ForeignKey,
     Integer,
     String,
-    UniqueConstraint,
-    Numeric,
-    DateTime,
-    Text,
-    func,
     MetaData,
-    desc,
 )
-from sqlalchemy.orm import relationship
 from sqlalchemy.orm import declarative_base
 
 meta = MetaData(

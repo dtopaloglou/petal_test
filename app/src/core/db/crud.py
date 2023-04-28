@@ -1,6 +1,3 @@
-import typing as t
-import requests
-from sqlalchemy import or_, func, and_
 from sqlalchemy.orm import Session
 
 from src.core.db import schema
