@@ -135,11 +135,12 @@ def update_pokemon(
 def get_pokemon(
     db=Depends(get_db),
     current_page: int = Query(..., alias="page", description="Current page number."),
-    page_size: int = Query(..., alias="pageSize", description="Results per page."),
+    page_size: int = Query(10, alias="pageSize", description="Results per page."),
     sort: Optional[str] = Query(
         None,
         description="Sort data by field and sorting direction in the form of `field:direction`",
     ),
+    current_user: models.User = Depends(get_current_user),
 ):
     """
     Retrieve a list of all pokemon in a paginated way
