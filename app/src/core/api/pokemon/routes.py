@@ -60,7 +60,7 @@ def get_pokemon_id(
     id: int, db=Depends(get_db), current_user: models.User = Depends(get_current_user)
 ):
     """
-    Retrieve a pokemon by e-mail.
+    Retrieve a pokemon by Pokemon ID.
     """
     pokemon = crud.get_pokemon_by_id(db, id)
     if pokemon:
